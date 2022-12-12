@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+<body>
+    <div class="container">
+    <table class="table table-stripped">
+        <thead>
+           <tr>
+               <th> loc </th>
+               <th> number </th>
+           </tr>
+        </thead>
+        <tbody id="data">
+
+        </tbody>
+    </table>
+    </div>
+     <script>
+         fetch("https://api.rootnet.in/covid19-in/contacts").then(
+             res=>{
+                 res.json().then(
+                     data=>{
+                         console.log(data);
+                         if(data.length > 0){
+                             vartemp = "";
+
+                             //----star
+
+                             data.forEach((u)=>{
+                                 temp +="<tr>";
+                                 temp += "<td>"+loc+"</td>";
+                                 temp += "<td>"+number+"</td></tr>";
+                             })
+                             //---close
+
+                             document.getElementById("data").innerHTML = temp;
+                         }
+                     }
+                 )
+             }
+         )
+     </script>
+
+</body>
+</html>
